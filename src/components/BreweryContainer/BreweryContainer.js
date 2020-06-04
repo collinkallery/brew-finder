@@ -5,6 +5,38 @@ import {fetchByCity, fetchByState, fetchByZip} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
 
+const {
+  background,
+  secondaryBackground,
+  textColorGrey,
+  textColorWhite,
+  accent
+} = darkTheme;
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 85%;
+  padding: 3%;
+  overflow: scroll;
+
+  h2 {
+    font-size: 2.5em;
+    text-align: center;
+    border-bottom: 1px solid ${secondaryBackground}
+  }
+`
+
+const PubWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 4%;
+`
+
 class BreweryContainer extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +47,9 @@ class BreweryContainer extends Component {
 
   pubsToDisplay = () => {
     const pubs = this.state.breweries.map(pub => {
+      console.log(pub);
       return (
-        <Brewery {...pub} />
+        <Brewery {...pub} key={pub.id} />
       )
     })
     return pubs;
@@ -45,9 +78,12 @@ class BreweryContainer extends Component {
 
   render() {
     return (
-      <section>
-        {this.pubsToDisplay()}
-      </section>
+      <Wrapper>
+        <h2>Breweries in {this.props.searchLocation}</h2>
+        <PubWrapper>
+          {this.pubsToDisplay()}
+        </PubWrapper>
+      </Wrapper>
     )
   }
 }
