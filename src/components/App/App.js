@@ -3,8 +3,9 @@ import styled from "styled-components";
 import BreweryContainer from '../BreweryContainer/BreweryContainer';
 import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
-import {fetchByCity} from '../../apiCalls'
+import {fetchByCity} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
+import {Route} from "react-router-dom";
 
 const {
   background,
@@ -25,14 +26,19 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pubsByCity: [],
-      pubsByState: []
+      searchType: '',
+      searchLocation: '',
+      hasSearched: false
     }
   }
 
-  componentDidMount = async => {
-    fetchByCity('denver')
-      .then(data => this.setState({pubsByCity: data}))
+  setSearch = (searchValues) => {
+    console.log('SV', searchValues);
+    this.setState({
+      searchType: searchValues.locationType,
+      searchLocation: searchValues.location,
+      hasSearched: true
+    })
   }
 
   render() {
@@ -40,7 +46,27 @@ class App extends Component {
       <Wrapper>
         <GlobalStyle />
         <NavBar />
-        <Search />
+        <Route
+          path="/"
+          exact
+          render={() => {
+            return (
+              <Search setSearch={this.setSearch} />
+            )
+          }}
+        />
+        <Route
+          path="/breweries/:location"
+          exact
+          render={() => {
+            return (
+              <BreweryContainer
+                searchType={this.state.searchType}
+                searchLocation={this.state.searchLocation}
+              />
+            )
+          }}
+        />
       </Wrapper>
     )
   }
