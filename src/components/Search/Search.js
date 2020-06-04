@@ -14,7 +14,7 @@ const {
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 85%;
   background-image: url('https://images.unsplash.com/photo-1536638317175-32449deccfc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
   background-size: cover;
   background-position: center;
@@ -25,7 +25,7 @@ const Wrapper = styled.section`
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 49%;
+    height: 55%;
     margin: auto;
     background-color: ${background};
     opacity: 85%;
@@ -89,7 +89,6 @@ class Search extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log('state', this.state);
     this.props.setSearch(this.state);
   }
 
