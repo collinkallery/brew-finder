@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
+import {Link} from "react-router-dom";
 
 const {
   background,
@@ -10,28 +11,62 @@ const {
   accent
 } = darkTheme;
 
-const NavBar = () => {
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  background-color: ${background};
 
-  const Wrapper = styled.section`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 2.3em;
+    margin-left: 2%;
+    border-bottom: 2px solid ${accent};
     width: 100%;
-    height: 10%;
-    background-color: ${background};
+  }
+`
+const TopStyled = styled.section`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
 
-    h1 {
-      font-family: 'Righteous', cursive;
-      font-size: 2.7em;
-      margin-left: 2%;
-      border-bottom: 2px solid ${accent};
-      width: 100%;
+`
+const BottomStyled = styled.section`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+`
+const NavLinkStyled = styled(Link)`
+  width: 20%;
+  text-align: center;
+  text-decoration: none;
+  color: ${textColorWhite};
+    &:focus {
+      border-left: 1px solid ${accent};
+      border-right: 1px solid ${accent};
+      color: ${accent};
     }
-  `
+`
+const NavBar = () => {
 
   return (
     <Wrapper>
-      <h1>Brew Finder</h1>
+      <TopStyled>
+        <h1>Brew Finder</h1>
+      </TopStyled>
+      <BottomStyled>
+        <NavLinkStyled to="/">Home</NavLinkStyled>
+        <NavLinkStyled to="/favorites">Favorites</NavLinkStyled>
+        <NavLinkStyled to="/to-visit">Pubs to Visit</NavLinkStyled>
+      </BottomStyled>
     </Wrapper>
   )
 }
