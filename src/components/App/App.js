@@ -33,7 +33,6 @@ class App extends Component {
   }
 
   setSearch = (searchValues) => {
-    console.log('SV', searchValues);
     this.setState({
       searchType: searchValues.locationType,
       searchLocation: searchValues.location,
