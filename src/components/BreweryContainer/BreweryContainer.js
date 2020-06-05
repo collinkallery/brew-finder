@@ -47,9 +47,13 @@ class BreweryContainer extends Component {
 
   pubsToDisplay = () => {
     const pubs = this.state.breweries.map(pub => {
-      console.log(pub);
       return (
-        <Brewery {...pub} key={pub.id} />
+        <Brewery
+          pub={pub}
+          key={pub.id}
+          setFavorites={this.props.setFavorites}
+          favorites={this.props.favorites}
+        />
       )
     })
     return pubs;

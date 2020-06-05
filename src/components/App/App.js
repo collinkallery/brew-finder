@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BreweryContainer from '../BreweryContainer/BreweryContainer';
 import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 import {fetchByCity} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
@@ -28,7 +29,9 @@ class App extends Component {
     this.state = {
       searchType: '',
       searchLocation: '',
-      hasSearched: false
+      hasSearched: false,
+      favorites: [],
+      toVist: []
     }
   }
 
@@ -39,6 +42,33 @@ class App extends Component {
       hasSearched: true
     })
   }
+
+  setFavorites = (newFavorite) => {
+    const allIDs = this.state.favorites.reduce((acc, favorite) => {
+      acc.push(favorite.id);
+      return acc;
+    }, []);
+    if (!allIDs.includes(newFavorite.id)) {
+      this.saveFavorite(newFavorite);
+    } else {
+      this.removeFromSaved(newFavorite);
+    }
+  };
+
+  saveFavorite = (favorite) => {
+    this.setState({
+      favorites: [...this.state.favorites, favorite],
+    });
+  };
+
+  removeFromSaved = (favoriteToRemove) => {
+    const newFavorites = this.state.favorites.filter((favorite) => {
+      return favorite.id !== favoriteToRemove.id;
+    });
+    this.setState({
+      favorites: newFavorites,
+    });
+  };
 
   render() {
     return (
@@ -55,6 +85,18 @@ class App extends Component {
           }}
         />
         <Route
+          path='/favorites'
+          exact
+          render={() => {
+            return (
+              <FavoritesContainer
+                favorites={this.state.favorites}
+                setFavorites={this.setFavorites}
+              />
+            )
+          }}
+        />
+        <Route
           path="/breweries/:location"
           exact
           render={() => {
@@ -62,6 +104,8 @@ class App extends Component {
               <BreweryContainer
                 searchType={this.state.searchType}
                 searchLocation={this.state.searchLocation}
+                setFavorites={this.setFavorites}
+                favorites={this.state.favorites}
               />
             )
           }}

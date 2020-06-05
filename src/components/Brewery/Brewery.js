@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
@@ -12,13 +12,37 @@ const {
 } = darkTheme;
 
 const Wrapper = styled.section`
-  width: 80%;
+  width: 85%;
   border: 1px solid ${secondaryBackground};
   margin: 2%;
   padding: 2%;
 
   h3 {
     font-size: 1.8em;
+    text-align: center;
+    border-bottom: 1px solid ${accent};
+    padding-bottom: 2%;
+  }
+  p {
+    margin: 2%;
+  }
+`
+
+const ButtonWrapper = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button {
+    width: 40%;
+    background-color: ${secondaryBackground};
+    font-size: .9em;
+    border: 1px solid ${accent};
+    color: ${textColorWhite};
+    margin: 2%;
+    padding: 2%;
+    border-radius: 5px;
+    font-family: 'Barlow Condensed', sans-serif;
   }
 `
 
@@ -28,18 +52,50 @@ const MapWrapper = styled.section`
 
 const Brewery = (props) => {
 
+  const handleFavorites = () => {
+    if (props.favorites.length > 0) {
+      props.favorites.forEach(favorite => {
+        if (favorite.id == props.pub.id) {
+          props.setFavorites(props.pub);
+        } else {
+          props.setFavorites(props.pub);
+        }
+      })
+    } else {
+      props.setFavorites(props.pub);
+    }
+  }
+
+  const checkFavorites = () => {
+    if (props.favorites.length > 0) {
+      props.favorites.forEach(favorite => {
+        if (favorite.id == props.pub.id) {
+          return false;
+        } else {
+          return true;
+        }
+      })
+    } else {
+      return true;
+    }
+  }
+
   return (
     <Wrapper>
-      <h3>{props.name}</h3>
+      <h3>{props.pub.name}</h3>
       <section>
-        <p>Brewery Type: {props.brewery_type}</p>
-        <p>Address: {props.street}</p>
-        <p>{props.city}, {props.state}</p>
-        <p>Phone Number: {props.phone}</p>
+        <p>Brewery Type: {props.pub.brewery_type}</p>
+        <p>Address: {props.pub.street}</p>
+        <p>{props.pub.city}, {props.pub.state}</p>
+        <p>Phone Number: {props.pub.phone}</p>
       </section>
-      <MapWrapper>
-
-      </MapWrapper>
+      <ButtonWrapper>
+        <button
+          onClick={handleFavorites}>
+          {checkFavorites() ? 'Favorite this Brewery' : 'Remove from Favorites'}
+        </button>
+        <button>Add to Visit List</button>
+      </ButtonWrapper>
     </Wrapper>
   )
 }
