@@ -46,10 +46,6 @@ const ButtonWrapper = styled.section`
   }
 `
 
-const MapWrapper = styled.section`
-  width: 90%;
-`
-
 const Brewery = (props) => {
 
   const handleFavorites = () => {
