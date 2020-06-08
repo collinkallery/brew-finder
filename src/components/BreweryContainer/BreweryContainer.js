@@ -53,6 +53,8 @@ class BreweryContainer extends Component {
           key={pub.id}
           setFavorites={this.props.setFavorites}
           favorites={this.props.favorites}
+          setToVisits={this.props.setToVisits}
+          toVisit={this.props.toVisit}
         />
       )
     })

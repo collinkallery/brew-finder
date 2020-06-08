@@ -19,7 +19,7 @@ const Wrapper = styled.section`
   background-size: cover;
   background-position: center;
 
-  form {
+  form { 
     display: flex;
     flex-direction: column;
     justify-content: center;

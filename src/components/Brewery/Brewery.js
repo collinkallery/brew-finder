@@ -55,7 +55,7 @@ const Brewery = (props) => {
   const handleFavorites = () => {
     if (props.favorites.length > 0) {
       props.favorites.forEach(favorite => {
-        if (favorite.id == props.pub.id) {
+        if (favorite.id === props.pub.id) {
           props.setFavorites(props.pub);
         } else {
           props.setFavorites(props.pub);
@@ -68,8 +68,39 @@ const Brewery = (props) => {
 
   const checkFavorites = () => {
     if (props.favorites.length > 0) {
-      props.favorites.forEach(favorite => {
-        if (favorite.id == props.pub.id) {
+      props.favorites.find(favorite => {
+        return favorite.id === props.pub.id
+      })
+      // props.favorites.forEach(favorite => {
+      //   if (favorite.id === props.pub.id) {
+      //     return false;
+      //   } else {
+      //     return true;
+      //   }
+      // })
+    } else {
+      return true;
+    }
+  }
+
+  const handleVisits = () => {
+    if (props.toVisit.length > 0) {
+      props.toVisit.forEach(pub => {
+        if (pub.id == props.pub.id) {
+          props.setToVisits(props.pub);
+        } else {
+          props.setToVisits(props.pub);
+        }
+      })
+    } else {
+      props.setToVisits(props.pub);
+    }
+  }
+
+  const checkVisits = () => {
+    if (props.toVisit.length > 0) {
+      props.toVisit.forEach(pub => {
+        if (pub.id == props.pub.id) {
           return false;
         } else {
           return true;
@@ -94,7 +125,10 @@ const Brewery = (props) => {
           onClick={handleFavorites}>
           {checkFavorites() ? 'Favorite this Brewery' : 'Remove from Favorites'}
         </button>
-        <button>Add to Visit List</button>
+        <button
+          onClick={handleVisits}>
+          {checkVisits() ? 'Add to Visit List' : 'Remove from Visits'}
+        </button>
       </ButtonWrapper>
     </Wrapper>
   )

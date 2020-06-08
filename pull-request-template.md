@@ -19,6 +19,6 @@
 - [ ] - NavBar
 - [ ] - Search
 - [ ] - Favorites
-- [ ] - ToSee
+- [ ] - ToVisit
 - [ ] - Theme
 - [ ] - apiCalls

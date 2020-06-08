@@ -26,7 +26,7 @@ const Wrapper = styled.section`
   }
 `
 
-const FavoriteWrapper = styled.section`
+const ToVisitWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,34 +35,33 @@ const FavoriteWrapper = styled.section`
   margin-top: 4%;
 `
 
-const FavoritesContainer = (props) => {
-
-  const favoritesToDisplay = () => {
-    const favorites = props.favorites.map(favorite => {
+const ToVisitContainer = (props) => {
+  const visitsToDisplay = () => {
+    const visits = props.toVisit.map(pubToVisit => {
       return (
         <Brewery
-          pub={favorite}
-          key={favorite.id}
+          pub={pubToVisit}
+          key={pubToVisit.id}
           setFavorites={props.setFavorites}
           favorites={props.favorites}
-          setToVisits={props.setToVisits}
           toVisit={props.toVisit}
+          setToVisits={props.setToVisits}
         />
       )
     })
-    return favorites;
+    return visits;
   }
   return (
     <Wrapper>
-      <h2>Your Favorite Pubs</h2>
-      <FavoriteWrapper>
-        {props.favorites.length === 0 ?
-          <h3>You don't have any favorites yet!</h3> :
-          favoritesToDisplay()
+      <h2>Pubs to Visit</h2>
+      <ToVisitWrapper>
+        {props.toVisit.length === 0 ?
+          <h3>You don't have any upcoming visits yet!</h3> :
+          visitsToDisplay()
         }
-      </FavoriteWrapper>
+      </ToVisitWrapper>
     </Wrapper>
   )
 }
 
-export default FavoritesContainer;
+export default ToVisitContainer;

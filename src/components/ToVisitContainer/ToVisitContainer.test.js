@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import {render, fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import {MemoryRouter} from 'react-router-dom';
-import FavoritesContainer from './FavoritesContainer';
+import ToVisitContainer from './ToVisitContainer';
 
-describe('Favorites Container', () => {
+describe('To Visit Container', () => {
 
   const pub1 = {
     id: 1,
@@ -38,15 +38,15 @@ describe('Favorites Container', () => {
 
   const mockSetFavorites = jest.fn();
   const mockSetToVisits = jest.fn();
-  const favorites = pubs;
-  const emptyFavorites = [];
-  const toVisit = [];
+  const favorites = [];
+  const toVisit = pubs;
+  const emptyToVisit = [];
 
   it('should render without crashing', () => {
 
     const {getByText} = render(
       <MemoryRouter>
-        <FavoritesContainer
+        <ToVisitContainer
           setFavorites={mockSetFavorites}
           favorites={favorites}
           setToVisits={mockSetToVisits}
@@ -55,16 +55,16 @@ describe('Favorites Container', () => {
       </MemoryRouter>
     )
 
-    const header = getByText('Your Favorite Pubs');
+    const header = getByText('Pubs to Visit');
 
     expect(header).toBeInTheDocument();
   });
 
-  it('should render favorite breweries onto the DOM', () => {
+  it('should render to-visit breweries onto the DOM', () => {
 
     const {getByText} = render(
       <MemoryRouter>
-        <FavoritesContainer
+        <ToVisitContainer
           setFavorites={mockSetFavorites}
           favorites={favorites}
           setToVisits={mockSetToVisits}
@@ -83,20 +83,20 @@ describe('Favorites Container', () => {
     expect(header3).toBeInTheDocument();
   });
 
-  it('should give an tell the user if they have no favorites', () => {
+  it('should give an tell the user if they have no to-visits', () => {
 
     const {getByText} = render(
       <MemoryRouter>
-        <FavoritesContainer
+        <ToVisitContainer
           setFavorites={mockSetFavorites}
-          favorites={emptyFavorites}
+          favorites={favorites}
           setToVisits={mockSetToVisits}
-          toVisit={toVisit}
+          toVisit={emptyToVisit}
         />
       </MemoryRouter>
     )
 
-    const noFavesHeader = getByText('You don\'t have any favorites yet!');
+    const noFavesHeader = getByText('You don\'t have any upcoming visits yet!');
 
     expect(noFavesHeader).toBeInTheDocument();
   });

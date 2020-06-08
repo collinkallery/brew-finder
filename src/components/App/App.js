@@ -4,6 +4,7 @@ import BreweryContainer from '../BreweryContainer/BreweryContainer';
 import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
+import ToVisitContainer from '../ToVisitContainer/ToVisitContainer';
 import {fetchByCity} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
@@ -31,7 +32,7 @@ class App extends Component {
       searchLocation: '',
       hasSearched: false,
       favorites: [],
-      toVist: []
+      toVisit: []
     }
   }
 
@@ -57,7 +58,7 @@ class App extends Component {
 
   saveFavorite = (favorite) => {
     this.setState({
-      favorites: [...this.state.favorites, favorite],
+      favorites: [...this.state.favorites, favorite]
     });
   };
 
@@ -66,7 +67,34 @@ class App extends Component {
       return favorite.id !== favoriteToRemove.id;
     });
     this.setState({
-      favorites: newFavorites,
+      favorites: newFavorites
+    });
+  };
+
+  setToVisits = (newPub) => {
+    const allIDs = this.state.toVisit.reduce((acc, pub) => {
+      acc.push(pub.id);
+      return acc;
+    }, []);
+    if(!allIDs.includes(newPub.id)) {
+      this.saveVisit(newPub);
+    } else {
+      this.removeFromVisits(newPub);
+    }
+  };
+
+  saveVisit = (pub) => {
+    this.setState({
+      toVisit: [...this.state.toVisit, pub]
+    });
+  };
+
+  removeFromVisits = (pubToRemove) => {
+    const newVisits = this.state.toVisit.filter((pub) => {
+      return pub.id !== pubToRemove.id;
+    });
+    this.setState({
+      toVisit: newVisits
     });
   };
 
@@ -92,6 +120,22 @@ class App extends Component {
               <FavoritesContainer
                 favorites={this.state.favorites}
                 setFavorites={this.setFavorites}
+                setToVisits={this.setToVisits}
+                toVisit={this.state.toVisit}
+              />
+            )
+          }}
+        />
+        <Route
+          path='/to-visit'
+          exact
+          render={() => {
+            return (
+              <ToVisitContainer
+                favorites={this.state.favorites}
+                setFavorites={this.setFavorites}
+                toVisit={this.state.toVisit}
+                setToVisits={this.setToVisits}
               />
             )
           }}
@@ -106,6 +150,8 @@ class App extends Component {
                 searchLocation={this.state.searchLocation}
                 setFavorites={this.setFavorites}
                 favorites={this.state.favorites}
+                setToVisits={this.setToVisits}
+                toVisit={this.state.toVisit}
               />
             )
           }}
