@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import Brewery from '../Brewery/Brewery';
+import BreweryToVisit from '../BreweryToVisit/BreweryToVisit';
 
 const {
   background,
@@ -39,7 +40,7 @@ const ToVisitContainer = (props) => {
   const visitsToDisplay = () => {
     const visits = props.toVisit.map(pubToVisit => {
       return (
-        <Brewery
+        <BreweryToVisit
           pub={pubToVisit}
           key={pubToVisit.id}
           setFavorites={props.setFavorites}
