@@ -13,7 +13,7 @@ describe('Brewery', () => {
     street: '123 Main Street',
     city: 'Denver',
     state: 'Colorado',
-    phone: 3031231234,
+    phone: 3031231234
   }
   const mockSetFavorites = jest.fn();
   const mockSetToVisits = jest.fn();
