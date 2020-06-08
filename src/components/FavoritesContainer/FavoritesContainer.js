@@ -45,6 +45,8 @@ const FavoritesContainer = (props) => {
           key={favorite.id}
           setFavorites={props.setFavorites}
           favorites={props.favorites}
+          setToVisits={props.setToVisits}
+          toVisit={props.toVisit}
         />
       )
     })
@@ -54,7 +56,10 @@ const FavoritesContainer = (props) => {
     <Wrapper>
       <h2>Your Favorite Pubs</h2>
       <FavoriteWrapper>
-        {favoritesToDisplay()}
+        {props.favorites.length === 0 ?
+          <h3>You don't have any favorites yet!</h3> :
+          favoritesToDisplay()
+        }
       </FavoriteWrapper>
     </Wrapper>
   )
