@@ -4,9 +4,6 @@ import {render, fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import {MemoryRouter} from 'react-router-dom';
 import FavoritesContainer from './FavoritesContainer';
-// import {fetchByCity, fetchByState, fetchByZip} from '../../apiCalls';
-
-// jest.mock('../../apiCalls');
 
 describe('Favorites Container', () => {
 
