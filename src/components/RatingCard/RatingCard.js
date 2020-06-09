@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -87,5 +88,11 @@ const RatingCard = (props) => {
     </Wrapper>
   )
 }
+
+RatingCard.propTypes = {
+  pub: PropTypes.object,
+  setRating: PropTypes.func,
+  hasRatedYet: PropTypes.bool
+};
 
 export default RatingCard;

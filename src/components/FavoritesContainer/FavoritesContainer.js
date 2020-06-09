@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import Brewery from '../Brewery/Brewery';
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -64,5 +65,12 @@ const FavoritesContainer = (props) => {
     </Wrapper>
   )
 }
+
+FavoritesContainer.propTypes = {
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+  toVisit: PropTypes.array,
+  setToVisits: PropTypes.func
+};
 
 export default FavoritesContainer;

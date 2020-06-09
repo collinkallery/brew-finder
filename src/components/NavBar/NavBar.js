@@ -10,7 +10,7 @@ const {
   textColorWhite,
   accent
 } = darkTheme;
- 
+
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
