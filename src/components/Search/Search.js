@@ -59,19 +59,9 @@ const Wrapper = styled.section`
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
-    color: ${textColorWhite}
+    color: ${textColorWhite};
+    font-size: 1em;
   }
-`
-
-const HomeLink = styled(Link)`
-  background-color: ${secondaryBackground};
-  border: 1px solid ${accent};
-  width: 30%;
-  margin: 3%;
-  padding: 3%;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
 `
 
 class Search extends Component {
