@@ -7,7 +7,7 @@ import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 import ToVisitContainer from '../ToVisitContainer/ToVisitContainer';
 import {fetchByCity} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route, Switch, Redirect} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 const {
   background,
@@ -119,21 +119,11 @@ class App extends Component {
     )
   }
 
-  resetSearch = () => {
-    this.setState({
-      hasSearched: false
-    })
-  }
-
   render() {
     return (
       <Wrapper>
         <GlobalStyle />
-        <NavBar resetSearch={this.resetSearch} />
-        {!this.state.hasSearched ?
-          <Redirect to="/" /> :
-          <Redirect to="/breweries/:location" />
-        }
+        <NavBar />
         <Switch>
           <Route
             path="/"
