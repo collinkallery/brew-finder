@@ -2,14 +2,12 @@ import React, {Component} from "react";
 import styled from "styled-components";
 import Brewery from '../Brewery/Brewery';
 import {fetchByCity, fetchByState, fetchByZip} from '../../apiCalls';
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route, Link} from "react-router-dom";
+import {darkTheme} from "../../theme/globalStyle";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
   textColorWhite,
   accent
 } = darkTheme;
@@ -79,10 +77,9 @@ class BreweryContainer extends Component {
         <Brewery
           pub={pub}
           key={pub.id}
-          setFavorites={this.props.setFavorites}
           favorites={this.props.favorites}
-          setToVisits={this.props.setToVisits}
           toVisit={this.props.toVisit}
+          updateFavoritesAndVisits={this.props.updateFavoritesAndVisits}
         />
       )
     })
@@ -141,10 +138,9 @@ class BreweryContainer extends Component {
 BreweryContainer.propTypes = {
   searchType: PropTypes.string,
   searchLocation: PropTypes.string,
-  setFavorites: PropTypes.func,
   favorites: PropTypes.array,
-  setToVisits: PropTypes.func,
-  toVisit: PropTypes.array
+  toVisit: PropTypes.array,
+  updateFavoritesAndVisits: PropTypes.func,
 };
 
 export default BreweryContainer;
