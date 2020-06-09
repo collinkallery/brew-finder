@@ -146,6 +146,41 @@ describe('App', () => {
     expect(brew1header).toBeInTheDocument();
   });
 
+  it('should be able to remove a brewery from favorites', async () => {
+
+    fetchByCity.mockResolvedValueOnce(pubs);
+
+    const {getByText, getByPlaceholderText, getByDisplayValue, getAllByText} = render (
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
+
+    const searchTypeInput = getByDisplayValue('Pick Location Type');
+    fireEvent.change(searchTypeInput, {target: {value: 'City'}});
+
+    const searchLocationInput = getByPlaceholderText('Location by city, state, or zip code');
+    fireEvent.change(searchLocationInput, {target: {value: 'Denver'}});
+
+    const submitButton = getByText('Let\'s Go!');
+    fireEvent.click(submitButton);
+
+    const faveButtons = await waitForElement(() => {
+      return getAllByText('Favorite this Brewery');
+    });
+
+    fireEvent.click(faveButtons[0]);
+
+    const unfaveButtons = getAllByText('Remove from Favorites');
+    fireEvent.click(unfaveButtons[0]);
+
+    const favoritesPageButton = getByText('Favorites');
+    fireEvent.click(favoritesPageButton);
+
+    const noFavoritesMessage = getByText('You don\'t have any favorites yet!');
+    expect(noFavoritesMessage).toBeInTheDocument();
+  });
+
   it('should be able to navigate back to the home page', async () => {
 
     fetchByCity.mockResolvedValueOnce(pubs);
@@ -172,6 +207,61 @@ describe('App', () => {
     const homeButton = getByText('Home');
 
     fireEvent.click(homeButton);
-    expect(submitButton).toBeInTheDocument();
+
+    const description = getByText('Lover of all things beer? Welcome to Brew Finder! Throw in your city, state, or zipcode to see some of the most popular breweries in your location!');
+
+    expect(description).toBeInTheDocument();
+  });
+
+  it('should be able to search by zipcode', async () => {
+
+    fetchByZip.mockResolvedValueOnce(pubs);
+
+    const {getByText, getByPlaceholderText, getByDisplayValue, getAllByText} = render (
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
+
+    const searchTypeInput = getByDisplayValue('Pick Location Type');
+    fireEvent.change(searchTypeInput, {target: {value: 'Zip Code'}});
+
+    const searchLocationInput = getByPlaceholderText('Location by city, state, or zip code');
+    fireEvent.change(searchLocationInput, {target: {value: '80205'}});
+
+    const submitButton = getByText('Let\'s Go!');
+    fireEvent.click(submitButton);
+
+    const brewHeader1 = await waitForElement(() => {
+      return getByText('Ratio Beerworks');
+    });
+
+    expect(brewHeader1).toBeInTheDocument();
+  });
+
+  it('should be able to search by state', async () => {
+
+    fetchByState.mockResolvedValueOnce(pubs);
+
+    const {getByText, getByPlaceholderText, getByDisplayValue, getAllByText} = render (
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
+
+    const searchTypeInput = getByDisplayValue('Pick Location Type');
+    fireEvent.change(searchTypeInput, {target: {value: 'State'}});
+
+    const searchLocationInput = getByPlaceholderText('Location by city, state, or zip code');
+    fireEvent.change(searchLocationInput, {target: {value: 'Colorado'}});
+
+    const submitButton = getByText('Let\'s Go!');
+    fireEvent.click(submitButton);
+
+    const brewHeader1 = await waitForElement(() => {
+      return getByText('Ratio Beerworks');
+    });
+
+    expect(brewHeader1).toBeInTheDocument();
   });
 });
