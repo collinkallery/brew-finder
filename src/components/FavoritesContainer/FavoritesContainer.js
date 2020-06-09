@@ -25,6 +25,15 @@ const Wrapper = styled.section`
     text-align: center;
     border-bottom: 1px solid ${secondaryBackground}
   }
+  h4 {
+    text-align: center;
+    margin: auto;
+    border-top: 1px solid ${accent};
+    border-bottom: 1px solid ${accent};
+    width: 90%;
+    padding: 10%;
+    font-size: 2.3em;
+  }
 `
 
 const FavoriteWrapper = styled.section`
@@ -58,7 +67,7 @@ const FavoritesContainer = (props) => {
       <h2>Your Favorite Pubs</h2>
       <FavoriteWrapper>
         {props.favorites.length === 0 ?
-          <h3>You don't have any favorites yet!</h3> :
+          <h4>You don't have any favorites yet!</h4> :
           favoritesToDisplay()
         }
       </FavoriteWrapper>

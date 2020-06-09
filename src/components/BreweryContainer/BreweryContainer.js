@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Brewery from '../Brewery/Brewery';
 import {fetchByCity, fetchByState, fetchByZip} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route} from "react-router-dom";
+import {Route, Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 const {
@@ -36,6 +36,33 @@ const PubWrapper = styled.section`
   width: 100%;
   height: 100%;
   margin-top: 4%;
+`
+
+const ErrorWrapper = styled.section`
+  text-align: center;
+  margin: auto;
+  border-top: 1px solid ${accent};
+  border-bottom: 1px solid ${accent};
+  width: 90%;
+
+  h3 {
+    font-size: 2.4em;
+    padding: 8%;
+    margin: 5%;
+  }
+`
+
+const HomeLink = styled(Link)`
+  background-color: ${secondaryBackground};
+  border: 1px solid ${accent};
+  width: 40%;
+  margin-top: 15%;
+  padding: 3%;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  color: ${textColorWhite};
+  font-size: 1em;
 `
 
 class BreweryContainer extends Component {
@@ -83,13 +110,29 @@ class BreweryContainer extends Component {
     }
   }
 
+  validateFetch = () => {
+    if (this.state.breweries.length < 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     return (
       <Wrapper>
-        <h2>Breweries in {this.props.searchLocation}</h2>
-        <PubWrapper>
-          {this.pubsToDisplay()}
-        </PubWrapper>
+      {this.validateFetch() ?
+        <section>
+          <h2>Breweries in {this.props.searchLocation}</h2>
+          <PubWrapper>
+            {this.pubsToDisplay()}
+          </PubWrapper>
+        </section> :
+        <ErrorWrapper>
+          <h3>Oops. We didn't find any breweries with that location. Try searching again!</h3>
+          <HomeLink to="/">Back Home</HomeLink>
+        </ErrorWrapper>
+      }
       </Wrapper>
     )
   }
