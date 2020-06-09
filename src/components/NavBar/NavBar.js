@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -55,7 +56,7 @@ const NavLinkStyled = styled(Link)`
       color: ${accent};
     }
 `
-const NavBar = () => {
+const NavBar = (props) => {
 
   return (
     <Wrapper>
@@ -63,12 +64,16 @@ const NavBar = () => {
         <h1>Brew Finder</h1>
       </TopStyled>
       <BottomStyled>
-        <NavLinkStyled to="/">Home</NavLinkStyled>
+        <NavLinkStyled onClick={props.resetSearch} to="/">Home</NavLinkStyled>
         <NavLinkStyled to="/favorites">Favorites</NavLinkStyled>
         <NavLinkStyled to="/to-visit">Pubs to Visit</NavLinkStyled>
       </BottomStyled>
     </Wrapper>
   )
 }
+
+NavBar.propTypes = {
+  resetSearch: PropTypes.func
+};
 
 export default NavBar;
