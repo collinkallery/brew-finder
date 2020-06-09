@@ -119,10 +119,4 @@ Search.propTypes = {
   setSearch: PropTypes.func
 };
 
-
-// onClick={() => this.handleSubmit()}
-
-// <HomeLink to={`/breweries/${this.state.location}`}>
-//   <button>Let's Go!</button>
-// </HomeLink>
 export default Search;
