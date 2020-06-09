@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import Brewery from '../Brewery/Brewery';
 import BreweryToVisit from '../BreweryToVisit/BreweryToVisit';
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -64,5 +65,12 @@ const ToVisitContainer = (props) => {
     </Wrapper>
   )
 }
+
+ToVisitContainer.propTypes = {
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+  toVisit: PropTypes.array,
+  setToVisits: PropTypes.func
+};
 
 export default ToVisitContainer;

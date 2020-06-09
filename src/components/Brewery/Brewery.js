@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -129,5 +130,13 @@ const Brewery = (props) => {
     </Wrapper>
   )
 }
+
+Brewery.propTypes = {
+  pub: PropTypes.object,
+  setFavorites: PropTypes.func,
+  favorites: PropTypes.array,
+  setToVisits: PropTypes.func,
+  toVisit: PropTypes.array
+};
 
 export default Brewery;

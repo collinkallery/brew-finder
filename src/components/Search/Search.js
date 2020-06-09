@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -19,7 +20,7 @@ const Wrapper = styled.section`
   background-size: cover;
   background-position: center;
 
-  form { 
+  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,5 +122,9 @@ class Search extends Component {
     )
   }
 }
+
+Search.propTypes = {
+  setSearch: PropTypes.func
+};
 
 export default Search;

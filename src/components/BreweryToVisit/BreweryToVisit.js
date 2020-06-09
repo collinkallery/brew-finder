@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route} from "react-router-dom";
 import RatingCard from '../RatingCard/RatingCard';
+import PropTypes from "prop-types";
 
 const {
   background,
@@ -102,5 +103,13 @@ class BreweryToVisit extends Component {
     )
   }
 }
+
+BreweryToVisit.propTypes = {
+  pub: PropTypes.object,
+  setFavorites: PropTypes.func,
+  favorites: PropTypes.array,
+  setToVisits: PropTypes.func,
+  toVisit: PropTypes.array
+};
 
 export default BreweryToVisit;
