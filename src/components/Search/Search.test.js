@@ -47,6 +47,19 @@ describe('Search', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
+  it('should track the inputs', () => {
+    const {getByText, getByPlaceholderText} = render(
+      <MemoryRouter>
+        <Search setSearch={mockSetSearch} />
+      </MemoryRouter>
+    )
+
+    const locationInput = getByPlaceholderText('Location by city, state, or zip code');
+
+    fireEvent.change(locationInput, {target: {value: 'Denver'}});
+    expect(locationInput.value).toEqual('Denver');
+  });
+
   it('should have a clickable submit button', () => {
     const {getByText} = render(
       <MemoryRouter>
@@ -59,5 +72,5 @@ describe('Search', () => {
     fireEvent.click(submitButton);
 
     expect(mockSetSearch).toHaveBeenCalled();
-  })
+  });
 });
