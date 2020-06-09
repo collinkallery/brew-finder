@@ -54,26 +54,31 @@ const RatingCard = (props) => {
             <p>Overall, how would you rate your experience at {props.pub.name}?</p>
             <button
               className="rating-button"
+              role="button"
               onClick={() => handleRatingClick(1)}>
               1 - Awful, never going back!
             </button>
             <button
               className="rating-button"
+              role="button"
               onClick={() => handleRatingClick(2)}>
               2 - Definitely not my favorite.
             </button>
             <button
               className="rating-button"
+              role="button"
               onClick={() => handleRatingClick(3)}>
               3 - Not too bad, could be better.
             </button>
             <button
               className="rating-button"
+              role="button"
               onClick={() => handleRatingClick(4)}>
               4 - Awesome Pub, would go back.
             </button>
             <button
               className="rating-button"
+              role="button"
               onClick={() => handleRatingClick(5)}>
               5 - One of my favorite breweries ever!
             </button>
