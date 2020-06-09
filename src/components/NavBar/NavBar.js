@@ -55,7 +55,7 @@ const NavLinkStyled = styled(Link)`
       color: ${accent};
     }
 `
-const NavBar = () => {
+const NavBar = (props) => {
 
   return (
     <Wrapper>
@@ -63,7 +63,7 @@ const NavBar = () => {
         <h1>Brew Finder</h1>
       </TopStyled>
       <BottomStyled>
-        <NavLinkStyled to="/">Home</NavLinkStyled>
+        <NavLinkStyled onClick={props.resetSearch} to="/">Home</NavLinkStyled>
         <NavLinkStyled to="/favorites">Favorites</NavLinkStyled>
         <NavLinkStyled to="/to-visit">Pubs to Visit</NavLinkStyled>
       </BottomStyled>
