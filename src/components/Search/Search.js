@@ -52,11 +52,14 @@ const Wrapper = styled.section`
   }
   button {
     background-color: ${secondaryBackground};
-    color: ${textColorWhite};
-    width: 100%;
-    font-size: 1em;
+    border: 1px solid ${accent};
+    width: 30%;
+    margin: 3%;
+    padding: 3%;
+    border-radius: 5px;
+    text-decoration: none;
     text-align: center;
-    border: none;
+    color: ${textColorWhite}
   }
 `
 
@@ -90,13 +93,14 @@ class Search extends Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     this.props.setSearch(this.state);
   }
 
   render() {
     return (
       <Wrapper>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <p>Lover of all things beer? Welcome to Brew Finder! Throw in your
           city, state, or zipcode to see some of the most popular breweries
           in your location!</p>
@@ -114,9 +118,7 @@ class Search extends Component {
             required
             onChange={this.trackInput}
           />
-          <HomeLink to={`/breweries/${this.state.location}`}>
-            <button onClick={() => this.handleSubmit()}>Let's Go!</button>
-          </HomeLink>
+          <button>Let's Go!</button>
         </form>
       </Wrapper>
     )
@@ -127,4 +129,10 @@ Search.propTypes = {
   setSearch: PropTypes.func
 };
 
+
+// onClick={() => this.handleSubmit()}
+
+// <HomeLink to={`/breweries/${this.state.location}`}>
+//   <button>Let's Go!</button>
+// </HomeLink>
 export default Search;
