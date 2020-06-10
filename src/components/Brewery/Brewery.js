@@ -1,13 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route} from "react-router-dom";
+import {darkTheme} from "../../theme/globalStyle";
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
   textColorWhite,
   accent
 } = darkTheme;
@@ -49,60 +46,26 @@ const ButtonWrapper = styled.section`
 
 const Brewery = (props) => {
 
-  const handleFavorites = () => {
-    if (props.favorites.length > 0) {
-      props.favorites.forEach(favorite => {
-        if (favorite.id === props.pub.id) {
-          props.setFavorites(props.pub);
+  const handleFavoritesAndVisits = (stateKey) => {
+    if (props[stateKey].length > 0) {
+      props[stateKey].forEach(pub => {
+        if (pub.id === props.pub.id) {
+          props.updateFavoritesAndVisits(props.pub, stateKey)
         } else {
-          props.setFavorites(props.pub);
+          props.updateFavoritesAndVisits(props.pub, stateKey)
         }
       })
     } else {
-      props.setFavorites(props.pub);
+      props.updateFavoritesAndVisits(props.pub, stateKey)
     }
   }
 
-  const checkFavorites = () => {
-    if (props.favorites.length > 0) {
-      props.favorites.find(favorite => {
-        return favorite.id === props.pub.id
+  const checkFavoritesAndVisits = (stateKey) => {
+    if (props[stateKey].length > 0) {
+      const item = props[stateKey].find(pub => {
+        return pub.id === props.pub.id
       })
-      // props.favorites.forEach(favorite => {
-      //   if (favorite.id === props.pub.id) {
-      //     return false;
-      //   } else {
-      //     return true;
-      //   }
-      // })
-    } else {
-      return true;
-    }
-  }
-
-  const handleVisits = () => {
-    if (props.toVisit.length > 0) {
-      props.toVisit.forEach(pub => {
-        if (pub.id == props.pub.id) {
-          props.setToVisits(props.pub);
-        } else {
-          props.setToVisits(props.pub);
-        }
-      })
-    } else {
-      props.setToVisits(props.pub);
-    }
-  }
-
-  const checkVisits = () => {
-    if (props.toVisit.length > 0) {
-      props.toVisit.forEach(pub => {
-        if (pub.id == props.pub.id) {
-          return false;
-        } else {
-          return true;
-        }
-      })
+      return !item;
     } else {
       return true;
     }
@@ -119,12 +82,12 @@ const Brewery = (props) => {
       </section>
       <ButtonWrapper>
         <button
-          onClick={handleFavorites}>
-          {checkFavorites() ? 'Favorite this Brewery' : 'Remove from Favorites'}
+          onClick={() => handleFavoritesAndVisits('favorites')}>
+          {checkFavoritesAndVisits('favorites') ? 'Favorite this Brewery' : 'Remove from Favorites'}
         </button>
         <button
-          onClick={handleVisits}>
-          {checkVisits() ? 'Add to Visit List' : 'Remove from Visits'}
+          onClick={() => handleFavoritesAndVisits('toVisit')}>
+          {checkFavoritesAndVisits('toVisit') ? 'Add to Visit List' : 'Remove from Visits'}
         </button>
       </ButtonWrapper>
     </Wrapper>
@@ -133,10 +96,10 @@ const Brewery = (props) => {
 
 Brewery.propTypes = {
   pub: PropTypes.object,
-  setFavorites: PropTypes.func,
   favorites: PropTypes.array,
-  setToVisits: PropTypes.func,
-  toVisit: PropTypes.array
+  toVisit: PropTypes.array,
+  updateFavoritesAndVisits: PropTypes.func,
+
 };
 
 export default Brewery;

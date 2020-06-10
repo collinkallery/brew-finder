@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
+import {darkTheme} from "../../theme/globalStyle";
 import {Link} from "react-router-dom";
 
 const {
   background,
   secondaryBackground,
-  textColorGrey,
   textColorWhite,
   accent
 } = darkTheme;

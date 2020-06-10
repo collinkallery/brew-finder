@@ -5,15 +5,10 @@ import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 import ToVisitContainer from '../ToVisitContainer/ToVisitContainer';
-import {fetchByCity} from '../../apiCalls';
 import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
 import {Route, Switch} from "react-router-dom";
 
 const {
-  background,
-  secondaryBackground,
-  textColorGrey,
-  textColorWhite,
   accent
 } = darkTheme;
 
@@ -57,57 +52,30 @@ class App extends Component {
     })
   }
 
-  setFavorites = (newFavorite) => {
-    const allIDs = this.state.favorites.reduce((acc, favorite) => {
-      acc.push(favorite.id);
-      return acc;
-    }, []);
-    if (!allIDs.includes(newFavorite.id)) {
-      this.saveFavorite(newFavorite);
-    } else {
-      this.removeFromSaved(newFavorite);
-    }
-  };
-
-  saveFavorite = (favorite) => {
-    this.setState({
-      favorites: [...this.state.favorites, favorite]
-    });
-  };
-
-  removeFromSaved = (favoriteToRemove) => {
-    const newFavorites = this.state.favorites.filter((favorite) => {
-      return favorite.id !== favoriteToRemove.id;
-    });
-    this.setState({
-      favorites: newFavorites
-    });
-  };
-
-  setToVisits = (newPub) => {
-    const allIDs = this.state.toVisit.reduce((acc, pub) => {
+  updateFavoritesAndVisits = (newPub, stateKey) => {
+    const allIDs = this.state[stateKey].reduce((acc, pub) => {
       acc.push(pub.id);
       return acc;
     }, []);
-    if(!allIDs.includes(newPub.id)) {
-      this.saveVisit(newPub);
+    if (!allIDs.includes(newPub.id)) {
+      this.savePub(newPub, stateKey);
     } else {
-      this.removeFromVisits(newPub);
+      this.removePub(newPub, stateKey)
     }
-  };
+  }
 
-  saveVisit = (pub) => {
+  savePub = (pubToAdd, stateKey) => {
     this.setState({
-      toVisit: [...this.state.toVisit, pub]
+      [stateKey]: [...this.state[stateKey], pubToAdd]
     });
   };
 
-  removeFromVisits = (pubToRemove) => {
-    const newVisits = this.state.toVisit.filter((pub) => {
+  removePub = (pubToRemove, stateKey) => {
+    const newPubs = this.state[stateKey].filter((pub) => {
       return pub.id !== pubToRemove.id;
     });
     this.setState({
-      toVisit: newVisits
+      [stateKey]: newPubs
     });
   };
 
@@ -141,9 +109,8 @@ class App extends Component {
               return (
                 <FavoritesContainer
                   favorites={this.state.favorites}
-                  setFavorites={this.setFavorites}
-                  setToVisits={this.setToVisits}
                   toVisit={this.state.toVisit}
+                  updateFavoritesAndVisits={this.updateFavoritesAndVisits}
                 />
               )
             }}
@@ -155,9 +122,8 @@ class App extends Component {
               return (
                 <ToVisitContainer
                   favorites={this.state.favorites}
-                  setFavorites={this.setFavorites}
                   toVisit={this.state.toVisit}
-                  setToVisits={this.setToVisits}
+                  updateFavoritesAndVisits={this.updateFavoritesAndVisits}
                 />
               )
             }}
@@ -170,10 +136,9 @@ class App extends Component {
                 <BreweryContainer
                   searchType={this.state.searchType}
                   searchLocation={this.state.searchLocation}
-                  setFavorites={this.setFavorites}
                   favorites={this.state.favorites}
-                  setToVisits={this.setToVisits}
                   toVisit={this.state.toVisit}
+                  updateFavoritesAndVisits={this.updateFavoritesAndVisits}
                 />
               )
             }}
