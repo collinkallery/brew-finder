@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
+import {darkTheme} from "../../theme/globalStyle";
 import Brewery from '../Brewery/Brewery';
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
-  textColorWhite,
   accent
 } = darkTheme;
 
@@ -53,10 +50,9 @@ const FavoritesContainer = (props) => {
         <Brewery
           pub={favorite}
           key={favorite.id}
-          setFavorites={props.setFavorites}
           favorites={props.favorites}
-          setToVisits={props.setToVisits}
           toVisit={props.toVisit}
+          updateFavoritesAndVisits={props.updateFavoritesAndVisits}
         />
       )
     })
@@ -77,9 +73,8 @@ const FavoritesContainer = (props) => {
 
 FavoritesContainer.propTypes = {
   favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
   toVisit: PropTypes.array,
-  setToVisits: PropTypes.func
+  updateFavoritesAndVisits: PropTypes.func
 };
 
 export default FavoritesContainer;
