@@ -33,7 +33,8 @@ This project was a wonderful project to test out our abilities in React and the 
 
 ## Brew Finder - In Action 
 
-![Home Screen](https://i.imgur.com/HgtqBkP.png =250x)
+
+<img src="https://i.imgur.com/HgtqBkP.png" alt="Home Screen" width=200/>
 ![Filled out form](https://i.imgur.com/W4gZeji.png)
 ![Breweries Page](https://i.imgur.com/uBdoFsF.png)
 ![Favorites Page](https://i.imgur.com/OxwOhVf.png)
