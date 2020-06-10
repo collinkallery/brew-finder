@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import Brewery from '../Brewery/Brewery';
+import {darkTheme} from "../../theme/globalStyle";
 import BreweryToVisit from '../BreweryToVisit/BreweryToVisit';
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
-  textColorWhite,
   accent
 } = darkTheme;
 
@@ -53,10 +49,8 @@ const ToVisitContainer = (props) => {
         <BreweryToVisit
           pub={pubToVisit}
           key={pubToVisit.id}
-          setFavorites={props.setFavorites}
           favorites={props.favorites}
           toVisit={props.toVisit}
-          setToVisits={props.setToVisits}
         />
       )
     })
@@ -77,9 +71,8 @@ const ToVisitContainer = (props) => {
 
 ToVisitContainer.propTypes = {
   favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
   toVisit: PropTypes.array,
-  setToVisits: PropTypes.func
+  updateFavoritesAndVisits: PropTypes.func
 };
 
 export default ToVisitContainer;

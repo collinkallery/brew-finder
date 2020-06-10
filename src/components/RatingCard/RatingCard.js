@@ -1,13 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route} from "react-router-dom";
+import {darkTheme} from "../../theme/globalStyle";
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
   textColorWhite,
   accent
 } = darkTheme;
@@ -41,10 +38,7 @@ const ButtonWrapper = styled.section`
 
 const RatingCard = (props) => {
 
-  const [hasRated, setHasRated] = useState(false);
-
   const handleRatingClick = (id) => {
-    setHasRated(true);
     props.setRating(id);
   }
 
@@ -55,31 +49,26 @@ const RatingCard = (props) => {
             <p>Overall, how would you rate your experience at {props.pub.name}?</p>
             <button
               className="rating-button"
-              role="button"
               onClick={() => handleRatingClick(1)}>
               1 - Awful, never going back!
             </button>
             <button
               className="rating-button"
-              role="button"
               onClick={() => handleRatingClick(2)}>
               2 - Definitely not my favorite.
             </button>
             <button
               className="rating-button"
-              role="button"
               onClick={() => handleRatingClick(3)}>
               3 - Not too bad, could be better.
             </button>
             <button
               className="rating-button"
-              role="button"
               onClick={() => handleRatingClick(4)}>
               4 - Awesome Pub, would go back.
             </button>
             <button
               className="rating-button"
-              role="button"
               onClick={() => handleRatingClick(5)}>
               5 - One of my favorite breweries ever!
             </button>
