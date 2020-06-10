@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Brew Finder 
 
-## Available Scripts
+## Abstract 
 
-In the project directory, you can run:
+In our last week of our third quarter at Turing School of Software & Design, we were given a solo project (to do on our own), where we were told to find a public API to use, choose a specific audience, and create an application centered around it. After some research, I found a great API called Open Brewery DB - an API for breweries around the United States. They have endpoints for searching by city, state, or zip code. Each brewery dataset comes with a name, street address, type of brewery, etc. For my project, I decided to create a mobile application called Brew Finder - it is geared towards beer lovers who are likely traveling. It is an on-the-go application where a user can log on, enter in what city, state, or zip code they'd like to search within, and then see popular breweries within that location. A user is able to favorite certain breweries, and add them to an upcoming visit list, where they can check them off and then rate them from 1-5. 
 
-### `npm start`
+## Specific Objectives
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Display a strong understanding of React architecture using lightweight components. 
+2. Utilize React Router to allow a user to use the forward and back buttons on their browser, and have different URLs for each page. 
+3. Build out a robust testing suite using the React Testing Library with integration tests and unit tests. 
+4. Utilize the Fetch API to pull in data from another, brand new API. 
+5. Make strong use of asynchronous JavaScript, within individual components while fetching, and within testing suites. 
+6. Refactor code into clean, empathetic code. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+> Clone down this repo into an empty directory on your local machine
+> Run `npm install` in your teminal to install the project's dependencies
+> Run `npm start` to run the application in development mode
+> Visit [http://localhost:3000](http://localhost:3000) to view it in the browser
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Challenges & Looking Ahead
 
-### `npm run build`
+This project was a wonderful project to test out our abilities in React and the React Testing Library, especially after only working in groups for the past few weeks. One major challenge that proved to be highly beneficial in the end was getting more well-acquainted with conditional rendering - I had only watched group members do this in other projects, so getting a chance to implement it myself was pretty challenging but it is a great skill to know. Another challenge was testing - throughout this quarter at Turing, the learning curve has been steep with understanding their testing library, but with each project, it's gotten a bit easier. My integration tests were definitely the hardest, and asynchronous testing (mocking out a fetch as well) was pretty difficult. Looking forward, I understand that this project is truly only designed for mobile (I didn't put in any media queries for desktop so it looks awful when a user expands the screen). So I would like to spend some time adding in some media queries to make the project a bit more versatile. Another thing I would have loved to implement into this project was local storage, so that a user's favorites and to-visits would save past refresh, but I unfortunately didn't have much time. The last thing that I was hoping to implement was bringing in the Google Maps API to add a bit more visual stimulation to the application, but I've never used this API and didn't have time to pick it up. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Brew Finder - In Action 
