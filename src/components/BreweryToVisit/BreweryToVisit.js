@@ -92,7 +92,7 @@ class BreweryToVisit extends Component {
         </section>
         <VisitWrapper>
           {!this.state.hasVisited ?
-            <button onClick={() => this.updateVisitStatus()}>Add to Visits</button> :
+            <button onClick={() => this.updateVisitStatus()}>I've been here!</button> :
             this.showRatingCard()
           }
         </VisitWrapper>
