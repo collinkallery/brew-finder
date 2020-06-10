@@ -33,10 +33,9 @@ This project was a wonderful project to test out our abilities in React and the 
 
 ## Brew Finder - In Action 
 
-
-<img src="https://i.imgur.com/HgtqBkP.png" alt="Home Screen" width=200/>
-![Filled out form](https://i.imgur.com/W4gZeji.png)
-![Breweries Page](https://i.imgur.com/uBdoFsF.png)
-![Favorites Page](https://i.imgur.com/OxwOhVf.png)
-![Pubs to Visit](https://i.imgur.com/J7rUya2.png)
-![Rating Form](https://i.imgur.com/RY1vFmu.png)
+<img src="https://i.imgur.com/HgtqBkP.png" alt="Home Screen" width=300/>
+<img src="https://i.imgur.com/W4gZeji.png" alt="Filled out Form" width=300/>
+<img src="https://i.imgur.com/uBdoFsF.png" alt="Breweries Page" width=300/>
+<img src="https://i.imgur.com/OxwOhVf.png" alt="Favorites Page" width=300/>
+<img src="https://i.imgur.com/J7rUya2.png" alt="Pubs to Visit" width=300/>
+<img src="https://i.imgur.com/RY1vFmu.png" alt="Rating Form" width=300/>
