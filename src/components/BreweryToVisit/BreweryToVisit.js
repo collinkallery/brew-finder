@@ -1,14 +1,11 @@
 import React, {Component} from "react";
 import styled from "styled-components";
-import {GlobalStyle, darkTheme} from "../../theme/globalStyle";
-import {Route} from "react-router-dom";
+import {darkTheme} from "../../theme/globalStyle";
 import RatingCard from '../RatingCard/RatingCard';
 import PropTypes from "prop-types";
 
 const {
-  background,
   secondaryBackground,
-  textColorGrey,
   textColorWhite,
   accent
 } = darkTheme;
@@ -106,9 +103,7 @@ class BreweryToVisit extends Component {
 
 BreweryToVisit.propTypes = {
   pub: PropTypes.object,
-  setFavorites: PropTypes.func,
   favorites: PropTypes.array,
-  setToVisits: PropTypes.func,
   toVisit: PropTypes.array
 };
 

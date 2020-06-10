@@ -46,37 +46,6 @@ const ButtonWrapper = styled.section`
 
 const Brewery = (props) => {
 
-  const handleFavorites = () => {
-    if (props.favorites.length > 0) {
-      props.favorites.forEach(favorite => {
-        if (favorite.id === props.pub.id) {
-          props.updateFavoritesAndVisits(props.pub, 'favorites');
-        } else {
-          props.updateFavoritesAndVisits(props.pub, 'favorites');
-        }
-      })
-    } else {
-      props.updateFavoritesAndVisits(props.pub, 'favorites');
-    }
-  }
-
-  const checkFavorites = () => {
-    if (props.favorites.length > 0) {
-      props.favorites.find(favorite => {
-        return favorite.id === props.pub.id
-      })
-      // props.favorites.forEach(favorite => {
-      //   if (favorite.id === props.pub.id) {
-      //     return false;
-      //   } else {
-      //     return true;
-      //   }
-      // })
-    } else {
-      return true;
-    }
-  }
-
   const handleFavoritesAndVisits = (stateKey) => {
     if (props[stateKey].length > 0) {
       props[stateKey].forEach(pub => {
@@ -93,41 +62,10 @@ const Brewery = (props) => {
 
   const checkFavoritesAndVisits = (stateKey) => {
     if (props[stateKey].length > 0) {
-      props[stateKey].forEach(pub => {
-        if (pub.id === props.pub.id) {
-          return false;
-        } else {
-          return true;
-        }
+      const item = props[stateKey].find(pub => {
+        return pub.id === props.pub.id
       })
-    } else {
-      return true;
-    }
-  }
-
-  const handleVisits = () => {
-    if (props.toVisit.length > 0) {
-      props.toVisit.forEach(pub => {
-        if (pub.id === props.pub.id) {
-          props.updateFavoritesAndVisits(props.pub, 'toVisit');
-        } else {
-          props.updateFavoritesAndVisits(props.pub, 'toVisit');
-        }
-      })
-    } else {
-      props.updateFavoritesAndVisits(props.pub, 'toVisit');
-    }
-  }
-
-  const checkVisits = () => {
-    if (props.toVisit.length > 0) {
-      props.toVisit.forEach(pub => {
-        if (pub.id === props.pub.id) {
-          return false;
-        } else {
-          return true;
-        }
-      })
+      return !item;
     } else {
       return true;
     }
