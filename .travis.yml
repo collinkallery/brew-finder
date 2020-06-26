@@ -1,5 +1,10 @@
 language: node_js
 node_js:
-  - "node"
+- node
 notifications:
   email: false
+deploy:
+  api_key:
+    secure: EiOlnKBxK4m0voiqt8L/CSQwGUPNIpLdE7alA55UBYnjniobcDzG1nq+0c5bJPUXJ31hyPUYonrHfyBeRIokTEy2Uf4Il7zirKm/u2l01aoP8onMM2FB1/NagffS2DPkV/DuE4rIY4UWU6F/HShYw4HhroUA8+JpWM/F0S7Ufl4K2YapIqjtu9BTBdSggfh9BT172FEiwuWhMA2IhrBAICx/vo4Gbf9wk5jghcW4YQftqLd7rJbTJsrHe2BrD42UWaAbzaVcuohGCKjl/actDbS17UQY6lrgizYES5St8G9LUWYIU6AMfoGgvGkvsF6noc0GwnMlxY/YALtr2ao2XyNPu/VARE5HYO9qm+eUm45Ew+XzYpacMFMADFr8aqRf8BcoXLXB73QyIsaVFERX39GveIQC+CJLRd1kBKANtN2H5YcQWvo8qz24dTHWHhI12SGlHIprfA8pgHkJEEWfFsUcfUkh2/Zx737/cfsHdm3ku3bV8qKk9nLBbsB/S7tgKCRJ7dNVlpr/y964Zkqsz+kGICYzhgJ4m/Fc5YQB/8mTwx6BzWHD16SLxpAeOs3uOW8FxlHp6K0PnOm+scyX2yQDAXwgY7iT5bYrZBiCyIgpzX5UfAAaWqTyzGuJ6fbJJ/Eo0RgTTkqVbrpkUaKvTa99oz+MKjjx+nk8hRnDxRQ=
+  app: brew-finder
+  skip_cleanup: true
