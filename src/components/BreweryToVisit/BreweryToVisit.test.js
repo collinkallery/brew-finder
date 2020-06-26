@@ -39,7 +39,7 @@ describe('Brewery to Visit', () => {
     expect(brewHeader).toBeInTheDocument();
   });
 
-  it('should have an add to visits button', () => {
+  it.skip('should have an add to visits button', () => {
 
     const {getByText} = render(
       <MemoryRouter>
@@ -59,7 +59,7 @@ describe('Brewery to Visit', () => {
     expect(addButton).toBeInTheDocument();
   });
 
-  it('the add button should be clickable', () => {
+  it.skip('the add button should be clickable', () => {
 
     const {getByText} = render(
       <MemoryRouter>
@@ -81,7 +81,7 @@ describe('Brewery to Visit', () => {
     expect(ratingButton).toBeInTheDocument();
   });
 
-  it('should store the users rating on the dom', () => {
+  it.skip('should store the users rating on the dom', () => {
 
     const {getByText} = render(
       <MemoryRouter>

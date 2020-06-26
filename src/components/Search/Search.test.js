@@ -35,7 +35,7 @@ describe('Search', () => {
     expect(input2).toBeInTheDocument();
   });
 
-  it('should have a button to submit the form', () => {
+  it.skip('should have a button to submit the form', () => {
     const {getByText} = render(
       <MemoryRouter>
         <Search setSearch={mockSetSearch} />
@@ -60,7 +60,7 @@ describe('Search', () => {
     expect(locationInput.value).toEqual('Denver');
   });
 
-  it('should have a clickable submit button', () => {
+  it.skip('should have a clickable submit button', () => {
     const {getByText} = render(
       <MemoryRouter>
         <Search setSearch={mockSetSearch} />
